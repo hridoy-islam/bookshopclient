@@ -16,6 +16,8 @@ import EditBook from "../pages/admin/books/EditBook";
 import EditAuthor from "../pages/admin/authors/EditAuthor";
 import AllPublisher from "../pages/admin/publisher/AllPublisher";
 import EditPublisher from "../pages/admin/publisher/EditPublisher";
+import PrivateRoute from "./PrivateRoute";
+import SingleBook from "../pages/SingleBook";
 
 const router = createBrowserRouter([
 
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
         {
             path: '/books',
             element: <Books />
+        },
+        {
+            path: '/books/:id',
+            element: <SingleBook />
         },
         {
             path: '/login',
@@ -59,7 +65,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Admin />,
+    element: <PrivateRoute><Admin /></PrivateRoute>,
     children: [
         {
             path: '/dashboard',

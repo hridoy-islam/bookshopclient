@@ -1,6 +1,7 @@
 import React from 'react';
 
-const ProductDetails = () => {
+const ProductDetails = ({data}) => {
+  const {title, photo, description, price} = data
   return (
     <section>
       <div class="relative mx-auto max-w-screen-xl px-4 py-8">
@@ -8,35 +9,9 @@ const ProductDetails = () => {
           <div class="grid grid-cols-2 gap-4 md:grid-cols-1">
             <img
               alt="Les Paul"
-              src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+              src={photo}
               class="aspect-square w-full rounded-xl object-cover"
             />
-
-            <div class="grid grid-cols-2 gap-4 lg:mt-4">
-              <img
-                alt="Les Paul"
-                src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                class="aspect-square w-full rounded-xl object-cover"
-              />
-
-              <img
-                alt="Les Paul"
-                src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                class="aspect-square w-full rounded-xl object-cover"
-              />
-
-              <img
-                alt="Les Paul"
-                src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                class="aspect-square w-full rounded-xl object-cover"
-              />
-
-              <img
-                alt="Les Paul"
-                src="https://images.unsplash.com/photo-1456948927036-ad533e53865c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                class="aspect-square w-full rounded-xl object-cover"
-              />
-            </div>
           </div>
 
           <div class="sticky top-0">
@@ -49,7 +24,7 @@ const ProductDetails = () => {
             <div class="mt-8 flex justify-between">
               <div class="max-w-[35ch] space-y-2">
                 <h1 class="text-xl font-bold sm:text-2xl">
-                  Fun Product That Does Something Cool
+                  {title}
                 </h1>
 
                 <p class="text-sm">Highest Rated Product</p>
@@ -112,154 +87,19 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              <p class="text-lg font-bold">$119.99</p>
+              <p class="text-lg font-bold">${price}</p>
             </div>
 
             <div class="mt-4">
               <div class="prose max-w-none">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                  veniam dicta beatae eos ex error culpa delectus rem tenetur,
-                  architecto quam nesciunt, dolor veritatis nisi minus inventore,
-                  rerum at recusandae?
+                  {description}
                 </p>
               </div>
 
-              <button class="mt-2 text-sm font-medium underline">Read More</button>
             </div>
 
             <form class="mt-8">
-              <fieldset>
-                <legend class="mb-1 text-sm font-medium">Color</legend>
-
-                <div class="flex flex-wrap gap-1">
-                  <label for="color_tt" class="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="color"
-                      id="color_tt"
-                      class="peer sr-only"
-                    />
-
-                    <span
-                      class="group inline-block rounded-full border px-3 py-1 text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                    >
-                      Texas Tea
-                    </span>
-                  </label>
-
-                  <label for="color_fr" class="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="color"
-                      id="color_fr"
-                      class="peer sr-only"
-                    />
-
-                    <span
-                      class="group inline-block rounded-full border px-3 py-1 text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                    >
-                      Fiesta Red
-                    </span>
-                  </label>
-
-                  <label for="color_cb" class="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="color"
-                      id="color_cb"
-                      class="peer sr-only"
-                    />
-
-                    <span
-                      class="group inline-block rounded-full border px-3 py-1 text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                    >
-                      Cobalt Blue
-                    </span>
-                  </label>
-                </div>
-              </fieldset>
-
-              <fieldset class="mt-4">
-                <legend class="mb-1 text-sm font-medium">Size</legend>
-
-                <div class="flex flex-wrap gap-1">
-                  <label for="size_xs" class="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="size"
-                      id="size_xs"
-                      class="peer sr-only"
-                    />
-
-                    <span
-                      class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                    >
-                      XS
-                    </span>
-                  </label>
-
-                  <label for="size_s" class="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="size"
-                      id="size_s"
-                      class="peer sr-only"
-                    />
-
-                    <span
-                      class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                    >
-                      S
-                    </span>
-                  </label>
-
-                  <label for="size_m" class="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="size"
-                      id="size_m"
-                      class="peer sr-only"
-                    />
-
-                    <span
-                      class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                    >
-                      M
-                    </span>
-                  </label>
-
-                  <label for="size_l" class="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="size"
-                      id="size_l"
-                      class="peer sr-only"
-                    />
-
-                    <span
-                      class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                    >
-                      L
-                    </span>
-                  </label>
-
-                  <label for="size_xl" class="cursor-pointer">
-                    <input
-                      type="radio"
-                      name="size"
-                      id="size_xl"
-                      class="peer sr-only"
-                    />
-
-                    <span
-                      class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                    >
-                      XL
-                    </span>
-                  </label>
-                </div>
-              </fieldset>
 
               <div class="mt-8 flex gap-4">
                 <div>
@@ -276,7 +116,7 @@ const ProductDetails = () => {
 
                 <button
                   type="submit"
-                  class="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500"
+                  class="block rounded bg-teal-700 px-5 py-3 text-xs font-medium text-white hover:bg-red-700"
                 >
                   Add to Cart
                 </button>

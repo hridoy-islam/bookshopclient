@@ -31,7 +31,7 @@ export const googleLogin = createAsyncThunk('auth/googlelogin', async()=> {
 })
 
 export const getUser = createAsyncThunk('auth/getuser', async (email) => {
-    const res = await fetch(`http://localhost:5000/user/${email}`);
+    const res = await fetch(`http://localhost:5000/user/check/${email}`);
     const data = await res.json();
     if(data.status){
         return data;
@@ -44,7 +44,18 @@ export const getUser = createAsyncThunk('auth/getuser', async (email) => {
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {},
+    reducers: {
+        logout: (state) => {
+            state.user = {email : "", role : ""};
+        },
+        setUser: (state, { payload }) => {
+            state.user.email = payload;
+            state.isLoading = false;
+        },
+        toggleLoading: (state) => {
+            state.isLoading = false;
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(createUser.pending, (state)=> {
             state.isLoading = true;
@@ -116,5 +127,5 @@ export const authSlice = createSlice({
         })
     },
 })
-
+export const { logout, setUser, toggleLoading } = authSlice.actions;
 export default authSlice.reducer;

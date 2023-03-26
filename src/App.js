@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import auth from './firebase/firebase.config'
-import { getUser } from './features/auth/authSlice';
+import { getUser, toggleLoading } from './features/auth/authSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function App() {
         dispatch(getUser(user.email))
       }
       else {
-        //dispatch(toggleLoading())
+        dispatch(toggleLoading())
       }
     })
   }, [dispatch]);

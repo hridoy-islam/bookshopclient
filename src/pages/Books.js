@@ -242,7 +242,7 @@ const Books = () => {
                             books.map(book => <>
                             
                         <li>
-                            <Link to="/" class="group block overflow-hidden">
+                            <Link to={`/books/${book._id}`} class="group block overflow-hidden">
                                 <img
                                     src={book.photo}
                                     alt=""

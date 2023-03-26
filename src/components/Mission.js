@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const Mission = () => {
     return (
         <section>
-  <div class="mx-auto max-w-screen-2xl  py-8 ">
+  <div class="mx-auto max-w-screen-2xl py-8 ">
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <div class="bg-blue-600 p-8 md:p-12 lg:px-16 lg:py-24">
+      <div class="bg-red-700 p-8 md:p-12 lg:px-16 lg:py-24">
         <div class="mx-auto max-w-xl text-center">
           <h2 class="text-2xl font-bold text-white md:text-3xl">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit
@@ -22,7 +22,7 @@ const Mission = () => {
           <div class="mt-4 md:mt-8">
             <Link
               to="/"
-              class="inline-block rounded border border-white bg-white px-12 py-3 text-sm font-medium text-blue-500 transition hover:bg-transparent hover:text-white focus:outline-none focus:ring focus:ring-yellow-400"
+              class="inline-block rounded border border-white bg-white px-12 py-3 text-sm font-medium text-teal-600 transition hover:bg-transparent hover:text-white focus:outline-none focus:ring focus:ring-yellow-400"
             >
               Get Started Today
             </Link>
