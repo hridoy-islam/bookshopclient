@@ -1,7 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-
+import { useForm, useWatch } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-hot-toast";
+import { createUser, googleLogin } from "../features/auth/authSlice";
 const Signup = () => {
+    const { handleSubmit, register, reset, control } = useForm();
+    const password = useWatch({ control, name: "password" });
+    const confirmPassword = useWatch({ control, name: "confirmPassword" });
+    const [disabled, setDisabled] = useState(true);
+    const dispatch = useDispatch();
+    const { isError, error } = useSelector(state => state.auth)
+    useEffect(() => {
+        if (isError) {
+            toast.error(error)
+        }
+    }, [isError, error])
+
+    useEffect(() => {
+        if (
+            password !== undefined &&
+            password !== "" &&
+            confirmPassword !== undefined &&
+            confirmPassword !== "" &&
+            password === confirmPassword
+        ) {
+            setDisabled(false);
+        } else {
+            setDisabled(true);
+        }
+    }, [password, confirmPassword]);
+
+    const onSubmit = ({email, password}) => {
+        dispatch(createUser({email, password}))
+        reset();
+      };
+      const handleGoogleLogin = () => {
+        dispatch(googleLogin())
+      }
+
     return (
         <section className="bg-white">
             <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
@@ -77,8 +114,8 @@ const Signup = () => {
                             </p>
                         </div>
 
-                        <form action="#" className="mt-8 grid grid-cols-6 gap-6">
-                            <div className="col-span-6 sm:col-span-3">
+                        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 grid grid-cols-6 gap-6">
+                            {/*<div className="col-span-6 sm:col-span-3">
                                 <label
                                     for="FirstName"
                                     className="block text-sm font-medium text-gray-700"
@@ -94,7 +131,7 @@ const Signup = () => {
                                 />
                             </div>
 
-                            <div className="col-span-6 sm:col-span-3">
+                             <div className="col-span-6 sm:col-span-3">
                                 <label
                                     for="LastName"
                                     className="block text-sm font-medium text-gray-700"
@@ -108,10 +145,10 @@ const Signup = () => {
                                     name="last_name"
                                     className="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                                 />
-                            </div>
+                            </div> */}
 
                             <div className="col-span-6">
-                                <label for="Email" className="block text-sm font-medium text-gray-700">
+                                <label {...register("email")} for="Email" className="block text-sm font-medium text-gray-700">
                                     Email
                                 </label>
 
@@ -132,6 +169,7 @@ const Signup = () => {
                                 </label>
 
                                 <input
+                                {...register("password")}
                                     type="password"
                                     id="Password"
                                     name="password"
@@ -148,6 +186,7 @@ const Signup = () => {
                                 </label>
 
                                 <input
+                                {...register("confirmPassword")}
                                     type="password"
                                     id="PasswordConfirmation"
                                     name="password_confirmation"
@@ -184,14 +223,17 @@ const Signup = () => {
 
                             <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
                                 <button
+                                disabled={disabled}
                                     className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
                                 >
                                     Create an account
                                 </button>
 
+                                <button onClick={()=> handleGoogleLogin()}>Google</button>
+
                                 <p className="mt-4 text-sm text-gray-500 sm:mt-0">
                                     Already have an account?
-                                    <Link className="text-gray-700 underline">Log in</Link>.
+                                    <Link to="/login" className="text-gray-700 underline">Log in</Link>.
                                 </p>
                             </div>
                         </form>

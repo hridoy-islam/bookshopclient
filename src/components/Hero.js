@@ -1,38 +1,38 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
         <section class="bg-gray-50">
             <div
-                class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center"
+                class="mx-auto max-w-screen-xl px-4 py-22 lg:flex lg:h-screen lg:items-center"
             >
                 <div class="mx-auto max-w-xl text-center">
                     <h1 class="text-3xl font-extrabold sm:text-5xl">
-                        Understand User Flow.
+                    Canada's Biggest
                         <strong class="font-extrabold text-red-700 sm:block">
-                            Increase Conversion.
+                        Bookstore
                         </strong>
                     </h1>
 
                     <p class="mt-4 sm:text-xl sm:leading-relaxed">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo
-                        tenetur fuga ducimus numquam ea!
+                    Buy Books, Toys, Electronics, Paper Stationery
                     </p>
 
                     <div class="mt-8 flex flex-wrap justify-center gap-4">
-                        <a
+                        <Link
                             class="block w-full rounded bg-red-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
-                            href="/get-started"
+                            to="/books"
                         >
                             Get Started
-                        </a>
+                        </Link>
 
-                        <a
+                        <Link
                             class="block w-full rounded px-12 py-3 text-sm font-medium text-red-600 shadow hover:text-red-700 focus:outline-none focus:ring active:text-red-500 sm:w-auto"
-                            href="/about"
+                            to="/about"
                         >
                             Learn More
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
